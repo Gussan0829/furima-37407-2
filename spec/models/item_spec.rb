@@ -4,20 +4,20 @@ RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
-  describe "商品投稿" do
+  describe '商品投稿' do
     context '商品投稿ができるとき' do
       it 'name、category_id、price、content、charge、delivery、condition、prefecture、imageが存在すれば登録できる' do
         expect(@item).to be_valid
       end
     end
-    context "商品投稿ができないとき" do
-      it "商品名が空だと投稿できない" do
-        @item.name = ""
+    context '商品投稿ができないとき' do
+      it '商品名が空だと投稿できない' do
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
-      it "商品の説明が空では投稿できない" do
-        @item.content = ""
+      it '商品の説明が空では投稿できない' do
+        @item.content = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Content can't be blank")
       end
@@ -59,22 +59,22 @@ RSpec.describe Item, type: :model do
       it '価格は、¥300以下では保存不可能であること' do
         @item.price = '100'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it '価格は、¥9999999以上では保存不可能であること' do
         @item.price = '1000000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it '価格は半角数値でないと保存不可能であること' do
         @item.price = 'aaaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'ユーザーと紐づいていなければ出品できないこと' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
