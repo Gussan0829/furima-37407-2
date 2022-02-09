@@ -38,7 +38,8 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to  root_path
     end
-  
+  end
+
   private
 
   def item_params
@@ -55,4 +56,5 @@ class ItemsController < ApplicationController
   def item_find
     @item = Item.find(params[:id])
   end
+  
 end
