@@ -6,8 +6,8 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase_shipping = PurchaseShipping.new(purchase_params)
-    if @purchase.valid?
-      @purchase.save
+    if @purchase_shipping.valid?
+      @purchase_shipping.save
       return redirect_to root_path
     else
       render 'index'
@@ -17,7 +17,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase_shipping).permit(:post_code, :municipality, :address, :building_name, :prefecture_id).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:purchase_shipping).permit(:post_code, :municipality, :address, :building_name, :phone_number, :prefecture_id).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
 end
