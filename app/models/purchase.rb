@@ -2,8 +2,10 @@ class Purchase
   include ActiveModel::Model
   attr_accessor :user,:item
 
-  validates :user, presence: true, foreign_key: true
-  validates :item, presence: true, foreign_key: true
+  with_options presence: true, foreign_key: true do
+    validates :user
+    validates :item
+  end
   
   def save
     # 各テーブルにデータを保存する処理を書く
