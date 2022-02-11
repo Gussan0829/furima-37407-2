@@ -22,4 +22,6 @@ class User < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_many :items
+
+  has_many :purchases
 end
