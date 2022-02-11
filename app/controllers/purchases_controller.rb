@@ -1,7 +1,6 @@
 class PurchasesController < ApplicationController
   def index
     @purchase = Purchase.new
-    binding.pry
   end
 
   def create
