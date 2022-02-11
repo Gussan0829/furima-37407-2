@@ -12,5 +12,7 @@ class Shipping
   def save
     # 各テーブルにデータを保存する処理を書く
   end
+
+  belongs_to :purchase
 end
 
