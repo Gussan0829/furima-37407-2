@@ -1,10 +1,13 @@
 class PurchasesController < ApplicationController
   def index
-    @purchase = Purchase.new
+  end
+
+  def new
+    @purchase_shipping = PurchaseShipping.new
   end
 
   def create
-    @purchase = Purchase.new(purchase_params)
+    @purchase_shipping = PurchaseShipping.new(purchase_params)
     if @purchase.valid?
       @purchase.save
       return redirect_to root_path
@@ -16,7 +19,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase).permit(:user, :item)
+    params.require(:purchase_shipping).permit(:post_code, :municipality, :address, :building_name, :prefecture_id).merge(user_id: current_user.id, item_id: params[:item_id]
   end
 
 end
