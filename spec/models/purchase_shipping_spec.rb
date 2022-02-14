@@ -50,17 +50,17 @@ RSpec.describe PurchaseShipping, type: :model do
       expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
     end
     it 'phone_numberが9桁以内の半角数値では無いと保存できないこと' do
-      @purchase_shipping.phone_number = 11111
+      @purchase_shipping.phone_number = '11111'
       @purchase_shipping.valid?
       expect(@purchase_shipping.errors.full_messages).to include("Phone number is invalid")
     end
-    it 'phone_numberが11桁以上の半角数値では無いと保存できないこと' do
-      @purchase_shipping.phone_number = 11111111111111111111111111
+    it 'phone_numberが12桁以上の半角数値では無いと保存できないこと' do
+      @purchase_shipping.phone_number = '111111111111'
       @purchase_shipping.valid?
       expect(@purchase_shipping.errors.full_messages).to include("Phone number is invalid")
     end
-    it 'phone_numberが全角数値では無いと保存できないこと' do
-      @purchase_shipping.phone_number = "１１１１１１１１１１"
+    it 'phone_numberが全角数値が含まれていれば、保存できないこと' do
+      @purchase_shipping.phone_number = "111111111１"
       @purchase_shipping.valid?
       expect(@purchase_shipping.errors.full_messages).to include("Phone number is invalid")
     end
