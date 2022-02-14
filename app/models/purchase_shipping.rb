@@ -1,19 +1,18 @@
 class PurchaseShipping
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code,:prefecture_id, :municipality, :address, :building_name, :phone_number, :purchase_id
+  attr_accessor :user_id, :item_id, :post_code,:prefecture_id, :municipality, :address, :building_name, :phone_number, :purchase_id, :token
 
   with_options presence: true do
-    validates :post_code  
+    validates :address 
     validates :municipality     
-    validates :building_name
     validates :prefecture_id
-    validates :purchase_id
     validates :user_id    
     validates :item_id    
+    validates :token
   end
 
   with_options presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ } do
-    validates :address
+    validates :post_code 
   end
 
   with_options presence: true, format: { with: /\A\d{10,11}\z/ } do
