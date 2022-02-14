@@ -5,7 +5,7 @@ class PurchaseShipping
   with_options presence: true do
     validates :address 
     validates :municipality     
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { other_than: 1 }
     validates :user_id    
     validates :item_id    
     validates :token
