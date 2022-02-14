@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index1
-    if user_signed_in? && @item.purchase.present?
+    if @item.purchase.present?
       redirect_to root_path
     end
   end
