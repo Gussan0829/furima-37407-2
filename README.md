@@ -68,3 +68,4 @@
 ### Association
 
 - belongs_to :purchase
+<!-- "node": "16.13.1" -->
